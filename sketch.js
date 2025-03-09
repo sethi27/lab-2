@@ -5,7 +5,7 @@ class Ball {
         this.diameter = 100;
         this.speedX = random(-5, 5);
         this.speedY = random(-5, 5);
-        this.color = color(random(255), random(255), random(255));
+        this.color = color(255, 0, 0);
     }
 
     move() {
@@ -52,21 +52,24 @@ class Ball {
         noStroke();
         circle(this.x, this.y, this.diameter);
     }
-
-    clicked(px, py) {
-        let d = dist(px, py, this.x, this.y);
-        if (d < this.diameter/2) {
-            this.color = color(random(255), random(255), random(255));
-        }
-    }
 }
 
 let balls = [];
 
 function setup() {
     createCanvas(800, 600);
+    const colors = [
+        color(255, 0, 0),    
+        color(0, 255, 0),    
+        color(0, 0, 255),    
+        color(255, 255, 0),  
+        color(255, 0, 255)   
+    ];
+    
     for (let i = 0; i < 5; i++) {
-        balls.push(new Ball(random(width), random(height)));
+        let ball = new Ball(random(width), random(height));
+        ball.color = colors[i];
+        balls.push(ball);
     }
 }
 
@@ -76,11 +79,5 @@ function draw() {
     for (let ball of balls) {
         ball.move();
         ball.display();
-    }
-}
-
-function mousePressed() {
-    for (let ball of balls) {
-        ball.clicked(mouseX, mouseY);
     }
 } 
