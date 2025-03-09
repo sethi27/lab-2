@@ -2,7 +2,7 @@ class Ball {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.diameter = 50;
+        this.diameter = 100;
         this.speedX = random(-5, 5);
         this.speedY = random(-5, 5);
         this.color = color(random(255), random(255), random(255));
